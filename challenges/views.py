@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
-monthly_challenges_list = {
+monthly_challenges_dict = {
     'january': 'Chill and meditate',
     'february': 'Chill and play guitar',
     'march': 'Chill and play games',
@@ -21,12 +21,18 @@ def index(request):
     return HttpResponse('My Monthly Challenges')
 
 def month_by_number(request, month):
-    return HttpResponse('Challenges for ' + str(month))
+    months = list(monthly_challenges_dict.keys())
+    
+    if month > len(monthly_challenges_dict):
+        return HttpResponseNotFound('Not a month, so chill!')
+    
+    redirect_month = months[month - 1]
+    return HttpResponseRedirect(redirect_month)
 
 def month(request, month):
     challenge_text = ''
     try:
-        challenge_text = monthly_challenges_list[month]
+        challenge_text = monthly_challenges_dict[month]
         return HttpResponse(challenge_text)
     except:
-        return HttpResponseNotFound('Not a month, so chill')
+        return HttpResponseNotFound('Not a month, so chill!')
