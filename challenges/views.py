@@ -47,6 +47,9 @@ def month(request, month):
     challenge_text = ''
     try:
         challenge_text = monthly_challenges_dict[month]
-        return HttpResponse(challenge_text)
+        return render(request, 'challenges/challenge.html', {
+            'text': challenge_text,
+            'month': month,
+        })
     except:
         return HttpResponseNotFound('Not a month, so chill!')
