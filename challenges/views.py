@@ -14,7 +14,7 @@ monthly_challenges_dict = {
     'september': 'Chill and play games',
     'october': 'Chill and meditate',
     'november': 'Chill and play guitar',
-    'december': 'Chill and play games',
+    'december': None,
     }
 
 def get_month_index():
