@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <title>{{ month|title }}</title>
-            <meta name="description" content="Monthly Challenges App">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-    </head>
-    <body>
-        <main>
-          <ul>
-            {% for month in months %}
-              <li><a href="{% url 'month-challenges' month %}"> {{ month|title }}</a></li>
-            {% endfor %}
-          </ul>
-        </main>
-        
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+  My Monthly Challenges
+{% endblock title %}
+
+{% block content %}    
+  <ul>
+    {% for month in months %}
+      <li><a href="{% url 'month-challenges' month %}"> {{ month|title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
