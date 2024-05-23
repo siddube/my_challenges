@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'challenges/challenges.css' %}">
+  <link rel="stylesheet" href="{% static 'challenges/includes/header.css' %}">
+{% endblock css_files %}
 
 {% block title %}
   {{ month|title }} - Monthly Challenges App
@@ -7,9 +12,9 @@
 {% block content %}
 {% include 'challenges/includes/header.html' %}
   <main>
-    <h3>Challenges for {{ month|title }} </h3>
+    <h3 id="month-title">Challenges for {{ month|title }} </h3>
     {% if text is not None %}
-    <h4>{{ text }}</h4>
+    <h4 id="task-test">{{ text }}</h4>
     {% else %}
     <h4>No challenge set for {{ month|title }} </h4>
     {% endif %}
