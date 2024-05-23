@@ -4,10 +4,13 @@
   My Monthly Challenges
 {% endblock title %}
 
-{% block content %}    
-  <ul>
-    {% for month in months %}
-      <li><a href="{% url 'month-challenges' month %}"> {{ month|title }}</a></li>
-    {% endfor %}
-  </ul>
+{% block content %}
+{% include 'challenges/includes/header.html' %}    
+  <main>
+    <ul>
+      {% for month in months %}
+        <li><a href="{% url 'month-challenges' month %}"> {{ month|title }}</a></li>
+      {% endfor %}
+    </ul>
+  </main>
 {% endblock content %}
